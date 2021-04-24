@@ -1,0 +1,113 @@
+{% extends 'pages/common.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Profile</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Profile</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+
+
+
+		
+
+
+
+
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft">
+						
+							<!-- Profile Widget -->
+							<div class="card widget-profile pat-widget-profile">
+								<div class="card-body">
+									<div class="pro-widget-content">
+										<div class="profile-info-widget">
+											<a href="#" class="booking-doc-img">
+												<img src="/static/img/d.png" alt="User Image">
+											</a>
+											<div class="profile-det-info">
+												<h3>Patient Name : <strong>{{p_profile.name}}</strong></h3>
+												
+												<div class="patient-details">
+													<h5><b>Patient ID :</b> {{p_profile.id}}</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="patient-info">
+										<ul>
+											<li><h4> Phone <span>{{p_profile.phone}}</span></h4></li>
+											<li><h4> Age <span>{{p_profile.age}}</span></h4></li>
+											<li>Blood Group <span>{{p_profile.id}}</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- /Profile Widget -->
+							
+					
+							
+						</div>
+
+
+
+
+
+						<div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+
+
+
+							<h2>Prescription</h2>
+							<br>										
+							
+							<a href="{% url 'show_pescription' %}" class="add-new-btn p-4">Add Prescription</a>
+
+
+
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+
+
+
+
+
+
+{% endblock  %}
+
+
+
+

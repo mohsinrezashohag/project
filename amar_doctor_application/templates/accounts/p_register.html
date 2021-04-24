@@ -1,0 +1,85 @@
+{% extends "pages/common.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                
+                <!-- Login Tab Content -->
+                <div class="account-content">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-7 col-lg-6 login-left">
+                            <img src="/static/img/login-banner.png" class="img-fluid" alt="Doccure Login">	
+                        </div>
+                        <div class="col-md-12 col-lg-6 login-right">
+                            <div class="login-header">
+                                <h2>Register As  <span>Patient</span></h2>
+                            </div>
+
+
+
+
+
+
+
+                            <form action="" method="POST"enctype="multipart/form-data"autocomplete="off">
+
+                                {% csrf_token %}
+                            
+                               
+                                {{form | crispy}}
+                            
+                                <button type="submit"> Creat User</button>
+                            
+                            
+                            </form>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /Login Tab Content -->
+                    
+            </div>
+        </div>
+
+    </div>
+
+</div>		
+<!-- /Page Content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+{% endblock content %}

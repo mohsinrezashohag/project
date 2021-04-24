@@ -1,0 +1,243 @@
+{% extends 'pages/common.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+	<div class="container-fluid">
+		<div class="row align-items-center">
+			<div class="col-md-12 col-12">
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Doctor Profile</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Doctor Profile</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Breadcrumb -->
+
+
+
+<div class="container p-5">
+
+
+
+	<div class="row">
+
+
+		<div class="col-md-6">
+			<img src="{{profile.imageURL}}" class="img-fluid text-center" style="height: 300px;" alt="User Image">
+
+			
+
+		</div>
+
+		<div class="col-md-6">
+			
+			<div class="doc-info-cont text-dark ">
+
+				<h1>Doctor Name : &nbsp; Dr.{{profile.user.username}}</h1>
+				<p class="doc-speciality">Doctors Degree :&nbsp; {{profile.degre}}</p>
+				<p class="doc-department text-dark"><i class="fas fa-arrow-right fa-lg"></i> Specialist In
+					:&nbsp; <b>{{profile.speciality}}</b> </p>
+
+
+
+				&nbsp;
+
+
+				<div class="rating">
+					<i class="fas fa-star filled"></i>
+					<i class="fas fa-star filled"></i>
+					<i class="fas fa-star filled"></i>
+					<i class="fas fa-star filled"></i>
+					<i class="fas fa-star"></i>
+					<span class="d-inline-block average-rating">(35)</span>
+				</div>
+
+
+
+
+
+				<div class="clinic-details">
+					<ul class="clinic-gallery">
+						<li>
+							<a href="/static/img/features/feature-01.jpg" data-fancybox="gallery">
+								<img src="/static/img/features/feature-01.jpg" alt="Feature">
+							</a>
+						</li>
+						<li>
+							<a href="/static/img/features/feature-02.jpg" data-fancybox="gallery">
+								<img src="/static/img/features/feature-02.jpg" alt="Feature Image">
+							</a>
+						</li>
+						<li>
+							<a href="/static/img/features/feature-03.jpg" data-fancybox="gallery">
+								<img src="/static/img/features/feature-03.jpg" alt="Feature">
+							</a>
+						</li>
+						<li>
+							<a href="/static/img/features/feature-04.jpg" data-fancybox="gallery">
+								<img src="/static/img/features/feature-04.jpg" alt="Feature">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+
+		</div>
+
+
+
+	</div>
+
+
+
+</div>
+
+
+
+
+
+		{% if user.is_authenticated %}
+
+
+
+		<div class="section-header text-center">
+			<h2>Request For Roctors Appointment With Your Information</h2>
+			<p class="sub-title">After Getiing request a the Doctor will approved your appointment request.</p>
+		</div>
+
+
+
+
+
+
+
+
+		<div class="container">
+
+			<div class="row py-5">
+
+				<div class="col-md-12 bg-secondary p-5">
+
+					<form action="{% url 'doc_contact' %}" method="POST">
+
+						{% csrf_token %}
+
+						{% if user.is_authenticated %}
+						<input type="hidden" name="user_id" value="{{ user.id}}">
+						<input type="hidden" name="patient_image" value="{{ user.imageURL }}">
+
+
+
+
+
+						{% else %}
+						<input type="hidden" name="user_id" value="0">
+						{% endif %}
+
+						<input type="hidden" name="doctor_id" value="{{ profile.user_id }}">
+
+						<input type="hidden" name="doctor_speciality" value="{{ profile.speciality }}">
+
+						<input type="hidden" type="text" name="doctor_name" class="form-control"
+							value="{{ profile.user.username }}">
+
+
+						<div class="form-group">
+
+							<label for="name" class="col-form-label">Name:</label>
+
+							<input type="text" name="name" class="form-control" {% if user.is_authenticated %}
+								value="{{ user.username }}" {% endif %} required>
+
+						</div>
+
+
+						<div class="form-group">
+							<label for="email" class="col-form-label">Email:</label>
+							<input type="email" name="email" class="form-control" {% if user.is_authenticated %}
+								value="{{ user.email }}" {% endif %} required>
+						</div>
+
+
+						<div class="form-group">
+							<label for="phone" class="col-form-label">Phone:</label>
+							<input type="text" name="phone" class="form-control">
+						</div>
+
+
+						<div class="form-group">
+							<label for="message" class="col-form-label">Say Your Problems Shortly :</label>
+							<textarea name="message" class="form-control"></textarea>
+						</div>
+
+
+
+
+						<hr>
+						<input type="submit" value="Send" class="btn btn-block btn-success">
+					</form>
+
+				</div>
+
+
+
+
+
+
+			</div>
+
+
+		</div>
+
+
+
+		{% else %}
+
+		<div class="card success-card">
+			<div class="card-body">
+				<div class="success-cont">
+					<h1>😣😣</h1>
+					<h3 class="text-danger">You have to login our system,to get Doctors Appointment</h3>
+					
+					
+					<br>
+					<a href="{% url 'p_login' %} " class="btn btn-primary view-inv-btn">Login To Ousr Sytem</a>
+				</div>
+			</div>
+		</div>
+		
+
+		{% endif %}
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

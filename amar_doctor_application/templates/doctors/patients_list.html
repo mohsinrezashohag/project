@@ -1,0 +1,148 @@
+{% extends 'pages/common.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+  
+
+
+
+
+
+
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">My Patients</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">My Patients</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+
+
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+
+
+
+
+
+
+
+						
+							<!-- Profile Sidebar -->
+							{% include "pages/pro_side.html" %}
+							<!-- /Profile Sidebar -->
+
+
+
+
+
+
+
+
+							
+						</div>
+						<div class="col-md-7 col-lg-8 col-xl-9 ">
+						
+							<div class="row row-grid p-3 ">
+
+
+
+
+								{% for i in all_patient %}
+
+
+
+								<div class="col-md-6 col-lg-4 col-xl-3">
+									<div class="card widget-profile pat-widget-profile">
+										<div class="card-body">
+											<div class="pro-widget-content">
+												<div class="profile-info-widget">
+													<a href="patient-profile.html" class="booking-doc-img">
+														<img src="/static/img/d.png " alt="User Image">
+													</a>
+													<div class="profile-det-info">
+														<h3><a class="text-dark" href="patient-profile.html">Patient Name : <strong>{{i.name}}</strong> </a></h3>
+														
+														<div class="patient-details">
+															<h5><b>Patient Problem :</b>{{i.message}}</h5>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="patient-info">
+												<ul>
+													<li>Phone <span>{{i.phone}}</span></li>
+													<li>Age <span>{{i.age}}</span></li>
+													<li>Blood Group <span>{{i.blood}}</span></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+
+									<a  href="{% url 'p_profile' i.id %}"> view single profile </a>
+
+								</div>
+								
+
+								  
+								{% endfor %}
+
+
+
+							
+
+								
+					
+					
+								
+								
+								
+					
+					
+								
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+ 
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+

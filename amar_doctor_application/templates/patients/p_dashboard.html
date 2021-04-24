@@ -1,0 +1,232 @@
+
+
+
+{% extends 'pages/common.html' %}
+
+{% load static %}
+
+
+{% block content %}
+  
+
+
+
+
+
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+						<div class="col-md-12 col-12">
+					<div class="row align-items-center">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a  href="{% url 'home' %}">Home</a></li>
+									
+								</ol>
+							</nav>
+
+							&nbsp;<h2 class="breadcrumb-title">/ &nbsp;	Dashboard</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+
+	
+
+	
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						
+					
+						
+
+
+
+
+
+                        {% include "pages/patient_pro_side.html" %}
+
+
+
+
+
+
+
+
+
+                        
+						
+						<div class="col-md-7 col-lg-8 col-xl-9">
+							<div class="card">
+								<div class="card-body pt-0">
+								
+								<h1 class=text-center>Your Appointment List</h1>
+								<br><br>
+									
+									<!-- Tab Content -->
+									<div class="tab-content pt-0">
+										
+										<!-- Appointment Tab -->
+										<div id="pat_appointments" class="tab-pane fade show active">
+											<div class="card card-table mb-0">
+												<div class="card-body">
+													<div class="table-responsive">
+														<table class="table table-hover table-center mb-0">
+
+
+															<thead>
+																<tr>
+																	<th>Doctor</th>
+																	<!-- <th>Appt Date</th> -->
+																	<th>Requested Date & Time</th>
+																	<th>Follow Up At Chamber</th>
+																	<th>Status</th>
+																	<th></th>
+																</tr>
+															</thead>
+
+
+															<tbody>
+
+
+
+
+																{% for i in all_patient %}
+
+
+																<tr>
+
+
+
+																	<td>
+																		
+
+																			<p href="#" class="avatar avatar-sm mr-2">
+																				<img class="avatar-img rounded-circle" src="/static/img/d.png" alt="User Image">
+																			</p>
+
+																			<br>
+																			<br>
+
+
+																			<a class="text-dark " href="#"> Dr :  <strong>{{i.doctor_name}}</strong> <br> Specialist In :  <span>{{i.doctor_speciality}}</span></>
+																	
+
+
+																	</td>
+
+
+																	
+
+																	<!-- <td>14 Nov 2019 <span class="d-block text-info">10.00 AM</span></td> -->
+
+																	<td>{{i.contact_date}}</td>
+
+																
+
+																	<td>The Date will be added</td>
+
+
+
+																	<td>
+																		
+																		
+
+																		
+																		{% if i.confirm %}
+
+																		<span class="badge badge-pill bg-success-light">Confirmed</span>
+
+
+																		{% else %}
+
+																		<span class="badge badge-pill bg-danger-light">Not Confirmed</span>
+
+																		{% endif %}
+
+																		
+																			
+
+																	
+																	
+																	</td>
+
+
+																	<!-- <td class="text-right">
+
+																		<div class="table-action">
+																			
+																			<a href="" class="btn btn-sm bg-info-light">
+																				<i class="far fa-eye"></i> View
+																			</a>
+																		</div>
+																	</td> -->
+
+
+																</tr>
+												
+
+																{% endfor %}
+																
+																
+																
+
+
+																
+														
+														
+																
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /Appointment Tab -->
+										
+									
+										<!-- /Prescription Tab -->
+											
+									
+									
+										
+									</div>
+									<!-- Tab Content -->
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+   
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+

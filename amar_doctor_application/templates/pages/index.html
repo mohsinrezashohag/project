@@ -1,0 +1,288 @@
+
+
+{% extends 'pages/common.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+  
+<section id="hero" class="d-flex align-items-center pb-5">
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h1>Welcome to </h1> 
+                    
+                    
+                    <h1>Amar Doctor Service</h1>
+               
+                <h2>Here We Provide helthcare Services As your Need. <br> From Here You Can Book,Contact through our Application.
+                </h2>
+            </div>
+
+
+            <div class="col-md-6">
+
+
+            </div>
+            
+        </div>
+
+    
+      <br>
+      <a href="{% url 'doctors_search' %} " class=" h-tk btn btn-primary mb-5">Show Our Specialist Doctors</a>
+    </div>
+  </section>
+
+
+
+    
+    <!-- Clinic and Specialities -->
+    <section class="section section-specialities">
+        <div class="container-fluid">
+            <div class="section-header text-center">
+                <h2>Our Treatment Providing Depertments </h2>
+                <p class="sub-title">We have doctors with higher background & experience. We are commited to the customer to give the best helthcare & consulting services in reasnonable charge.  </p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <!-- Slider -->
+                    <div class="specialities-slider slider">
+                    
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="/static/img/specialities/specialities-01.png" class="img-fluid" alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Urology</p>
+                        </div>	
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="/static/img/specialities/specialities-02.png" class="img-fluid" alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>
+                            <p>Neurology</p>	
+                        </div>							
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="/static/img/specialities/specialities-03.png" class="img-fluid" alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>	
+                            <p>Orthopedic</p>	
+                        </div>							
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="/static/img/specialities/specialities-04.png" class="img-fluid" alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>	
+                            <p>Cardiologist</p>	
+                        </div>							
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="speicality-item text-center">
+                            <div class="speicality-img">
+                                <img src="/static/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">
+                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            </div>	
+                            <p>Dentist</p>
+                        </div>							
+                        <!-- /Slider Item -->
+                        
+                    </div>
+                    <!-- /Slider -->
+                    
+                </div>
+            </div>
+        </div>   
+    </section>	 
+    <!-- Clinic and Specialities -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Popular Section -->
+    <section class="section section-doctor">
+        <div class="container-fluid">
+
+            <div class="section-header text-center">
+                <h2>Our Doctors</h2>
+                <p class="sub-title">We have doctors with higher background & experience. We are commited to the customer to give the best helthcare & consulting services in reasnonable charge.  </p>
+            </div>
+
+
+
+
+           <div class="row">
+               
+                <div class="col-lg-12">
+                    <div class="doctor-slider slider">
+                    
+
+
+
+
+                        {% for i in doctor %}
+                          
+
+                        
+
+                        <!-- Doctor Widget -->
+                   <div class="profile-widget">
+                            <div class="doc-img">
+                                <a href="{% url 'doctor_profile' i.user_id %}">
+                                    <img style="width: 228px; height:228px;" class="img-fluid" alt="User Image" src="{{i.profile_image.url}}">
+                                </a>
+                                
+                            </div>
+                            <div class="pro-content">
+                                <h3 class="">
+                                    <a class="dc_name" href="{% url 'doctor_profile' i.user_id %}">Dr: <strong>{{i.user.username}} </strong></a> 
+                                    <i class="fas fa-check-circle verified"></i>
+                                </h3>
+                                <p class="speciality">{{i.speciality}}</p>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <span class="d-inline-block average-rating">(17)</span>
+                                </div>
+                                <ul class="available-info">
+                                    <li>
+                                        <i class="fas fa-map-marker-alt"></i> Florida, USA
+                                    </li>
+                                    <li>
+                                        <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                    </li>
+                                    <li>
+                                        <i class="far fa-money-bill-alt"></i> $300 - $1000 
+                                        <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
+                                    </li>
+                                </ul>
+                                <div class="row row-sm">
+                                    <div class="col-12">
+                                        <a href="{% url 'doctor_profile' i.user_id %}" class="btn view-btn">View Profile</a>
+                                    </div>
+              
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Doctor Widget -->
+
+
+
+
+                        {% endfor %}
+
+
+
+
+
+
+
+
+                
+                       
+                        
+                    </div>
+                </div>
+           </div>
+        </div>
+    </section>
+    <!-- /Popular Section -->
+   
+   <!-- Availabe Features -->
+   <section class="section section-features">
+        <div class="container-fluid">
+           <div class="row">
+                <div class="col-md-5 features-img">
+                    <img src="/static/img/features/feature.png" class="img-fluid" alt="Feature">
+                </div>
+                <div class="col-md-7">
+                    <div class="section-header">	
+                        <h2 class="mt-2">Availabe Features in Our Clinic</h2>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                    </div>	
+                    <div class="features-slider slider">
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="/static/img/features/feature-01.jpg" class="img-fluid" alt="Feature">
+                            <p>Patient Ward</p>
+                        </div>
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="/static/img/features/feature-02.jpg" class="img-fluid" alt="Feature">
+                            <p>Test Room</p>
+                        </div>
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="/static/img/features/feature-03.jpg" class="img-fluid" alt="Feature">
+                            <p>ICU</p>
+                        </div>
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="/static/img/features/feature-04.jpg" class="img-fluid" alt="Feature">
+                            <p>Laboratory</p>
+                        </div>
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="/static/img/features/feature-05.jpg" class="img-fluid" alt="Feature">
+                            <p>Operation</p>
+                        </div>
+                        <!-- /Slider Item -->
+                        
+                        <!-- Slider Item -->
+                        <div class="feature-item text-center">
+                            <img src="/static/img/features/feature-06.jpg" class="img-fluid" alt="Feature">
+                            <p>Medical</p>
+                        </div>
+                        <!-- /Slider Item -->
+                    </div>
+                </div>
+           </div>
+        </div>
+    </section>		
+    <!-- Availabe Features -->
+
+
+
+
+{% endblock  %}
+
+		

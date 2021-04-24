@@ -1,0 +1,148 @@
+
+
+{% extends 'pages/common.html' %}
+
+{% load static %}
+
+
+{% block content %}
+  
+
+
+
+
+
+		<div class="main-wrapper">
+		
+		
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-8 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Search</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Here We have : {{total_doctor}} doctors.</h2>
+								
+							
+							
+							<h2 class="breadcrumb-title"> Get Services from them as your Need.</h2>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+
+
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+
+
+							<form method="GET" class="form-inline my-2 my-lg-0"  action="{% url 'search_result' %}">
+
+
+								{% csrf_token %}
+								<input class="form-control mr-sm-2" type="search" placeholder="Search"aria-label="Search" name="search" id="search">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+							  </form>
+			
+							
+						</div>
+						
+						<div class="col-md-12 col-lg-8 col-xl-9">
+
+
+
+
+
+							{% for i in doctor %}
+							  
+
+
+							<!-- Doctor Widget -->
+							<div class="card ">
+								<div class="card-body">
+									<div class="doctor-widget">
+										<div class="doc-info-left">
+											<div class="doctor-img">
+												<a href="{% url 'doctor_profile' i.user_id %}">
+													<img src="/static/img/d.png" class="img-fluid" alt="User Image">
+												</a>
+											</div>
+											<div class="doc-info-cont">
+												<h3 class="text-dark"><a class="text-dark" href="{% url 'doctor_profile' i.user_id %}">Dr : {{i.user.username}}</a></h3>
+												<p class="doc-speciality">Specialist In : <strong>{{i.speciality}}</strong> </p>
+												<div class="rating">
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star filled"></i>
+													<i class="fas fa-star"></i>
+													<span class="d-inline-block average-rating">(17)</span>
+												</div>
+												<div class="clinic-details">
+													<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Florida, USA</p>
+													<ul class="clinic-gallery">
+														<li>
+															<a href="/static/img/features/feature-01.jpg" data-fancybox="gallery">
+																<img src="/static/img/features/feature-01.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="/static/img/features/feature-02.jpg" data-fancybox="gallery">
+																<img  src="/static/img/features/feature-02.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="/static/img/features/feature-03.jpg" data-fancybox="gallery">
+																<img src="/static/img/features/feature-03.jpg" alt="Feature">
+															</a>
+														</li>
+														<li>
+															<a href="/static/img/features/feature-04.jpg" data-fancybox="gallery">
+																<img src="/static/img/features/feature-04.jpg" alt="Feature">
+															</a>
+														</li>
+													</ul>
+												</div>
+											
+											</div>
+										</div>
+										<div class="doc-info-right">
+											
+											<div class="clinic-booking">
+											
+												<a class="apt-btn p-4"  href="{% url 'doctor_profile' i.user_id %}">View Profile</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Doctor Widget -->
+
+						
+
+							{% endfor %}
+
+							
+						</div>
+					</div>
+
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+
+
+            {% endblock content %}

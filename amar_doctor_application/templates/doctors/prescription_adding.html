@@ -1,0 +1,42 @@
+{% extends 'pages/common.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  
+<div class="container pt-5">
+
+
+    <form action="" method="POST"autocomplete="off">
+
+        {% csrf_token %}
+
+        {{ form.patient|as_crispy_field }}
+        {{ form.medicine_name|as_crispy_field }}
+        {{ form.take_time|as_crispy_field }}
+        {{ form.medical_suggestion|as_crispy_field }}
+
+
+
+        
+
+                <button type="submit" class="btn btn-primary mb-3"><i class="fa fa-database" aria-hidden="true"></i>Add to Pescription</button>
+
+          
+            
+
+
+        
+
+        </div>
+
+
+
+    </form>
+
+
+
+
+</div>
+
+
+{% endblock content %}

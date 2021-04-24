@@ -1,0 +1,128 @@
+{% extends "pages/common.html" %}
+
+
+{% block content %}
+  
+
+{% for i in users %}
+  
+{{i.name}}
+
+{% endfor %}
+
+<div class="breadcrumb-bar">
+	<div class="container-fluid">
+		<div class="row align-items-center">
+			<div class="col-md-12 col-12">
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+					</ol>
+				</nav>
+				<h2 class="breadcrumb-title">Add Presscription</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="container p-5">
+
+
+
+ 
+    <table class=" table table-bordered ">
+        <thead>
+          <tr>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Provided Medicin</th>
+            <th scope="col">How Many Time Need to Take </th>
+            <th scope="col">Medical Suggetion</th>
+            <th scope="col">Delete Medicine</th>
+
+            
+            
+          </tr>
+        </thead>
+    
+    
+    
+    
+        <tbody>
+    
+        {% for i in pescriopn %}
+    
+    
+          <tr>
+          
+            <td>{{i.patient.user}}</td>
+            <td>{{i.medicine_name}}</td>
+            <td>{{i.take_time}}</td>
+            <td>{{i.medical_suggestion}}</td>
+            <td>{{i.medical_suggestion}}</td>
+         
+         
+            <td>
+
+
+
+              <form action="{% url 'delete' i.id %}" method="POST">
+                
+
+                {% csrf_token %}
+                <button class="btn btn-danger"  type="submit">delete
+
+
+                </button>
+                
+              </form>
+
+
+
+
+            </td>
+
+          
+       
+            
+
+            
+
+        
+    
+          </tr>
+          
+        {% endfor %}
+    
+    
+        </tbody>
+    
+    
+      </table>
+
+      <div class="pt-5">  <a class="btn btn-primary" href="{% url 'create_prescription' %}" > <i class="fas fa-plus"></i>  Add New Medicine Or Suggetion </a>
+    
+    
+          <a class="btn btn-secondary" href="{% url 'doctors_dash' %}" class="previous">&laquo; &laquo; Back To Dashboard</a>  
+    </div>
+
+    
+
+    
+
+
+
+</div>
+ 
+
+
+
+    
+
+
+{% endblock  %}
